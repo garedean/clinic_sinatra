@@ -4,6 +4,7 @@ require('patient')
 require('specialty')
 require('capybara')
 require('pg')
+require('pry')
 
 DB = PG.connect(dbname: 'clinic_test')
 

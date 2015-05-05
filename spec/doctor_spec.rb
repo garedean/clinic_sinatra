@@ -62,4 +62,13 @@ describe(Doctor) do
     end
   end
 
+  describe('#specialty') do
+    it("returns a string describing the doctor's specialty") do
+      specialty = Specialty.new(type: "Brain Surgery", id: nil)
+      specialty.save
+      doctor = Doctor.new(id: nil, first_name: "Bill", last_name: "Brasky", specialty_id: specialty.id)
+      doctor.save
+      expect(doctor.specialty.type).to(eq("Brain Surgery"))
+    end
+  end
 end

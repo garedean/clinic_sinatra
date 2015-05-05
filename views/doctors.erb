@@ -2,6 +2,6 @@
 
 <ul>
   <% @doctors.each() do |doctor| %>
-  <li> <%= doctor.first_name  %> <%= doctor.last_name %></li>
+  <li> <%= doctor.first_name  %> <%= doctor.last_name %> - <%= doctor.specialty %></li>
   <% end %>
 </ul>

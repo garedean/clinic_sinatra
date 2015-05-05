@@ -32,4 +32,18 @@ class Doctor
   def ==(another_doctor)
     self.last_name == another_doctor.last_name && self.specialty_id == another_doctor.specialty_id
   end
+
+  def specialty
+    specialties = []
+    type = ''
+    returned_specialty = DB.exec("SELECT * FROM specialties WHERE id = #{@specialty_id};")
+    returned_specialty.each do |specialty|
+      type = specialty['type']
+      id   = specialty['id'].to_i
+      specialties << Specialty.new(type: type, id: id)
+      type = specialties.first.type
+    end
+  #specialties.first.type
+    type
+  end
 end

@@ -1,0 +1,23 @@
+<h1 class="page-header text-center">Specialties</h1>
+
+<form action="/specialties" method="post">
+  <div class="form-group">
+    <label for="type">Add a new specialty:</label>
+    <input required type="text" name="type" id="type" class="form-control" required autofocus>
+  </div>
+  <button type="submit" name="add_doctor" class="btn-primary">Submit</button>
+</form>
+
+<div id="specialties_list">
+  <h3>Current specialties:</h3>
+
+  <ul>
+    <% @specialties.each() do |specialty| %>
+    <li><%= specialty.id %> - <%= specialty.type() %></li>
+    <% end %>
+  </ul>
+</div>
+
+<a href="/specialties/reset">Reset Current Specialties</a>
+<br>
+<a href="/">Home</a>
