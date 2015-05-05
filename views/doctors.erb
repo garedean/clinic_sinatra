@@ -1,0 +1,7 @@
+<h1>Here are the current Doctors</h1>
+
+<ul>
+  <% @doctors.each() do |doctor| %>
+  <li> <%= doctor.first_name  %> <%= doctor.last_name %></li>
+  <% end %>
+</ul>

@@ -2,6 +2,7 @@ require('rspec')
 require('doctor')
 require('patient')
 require('specialty')
+require('capybara')
 require('pg')
 
 DB = PG.connect(dbname: 'clinic_test')

@@ -42,6 +42,14 @@ describe(Doctor) do
     it("is empty at first") do
       expect(Doctor.all()).to(eq([]))
     end
+
+    it("returns an array of doctor objects when multiple doctors exist") do
+      doctor1 = Doctor.new(id: nil, first_name: "Bill", last_name: "Brasky", specialty_id: 1)
+      doctor1.save()
+      doctor2 = Doctor.new(id: nil, first_name: "Bill", last_name: "Brasky", specialty_id: 1)
+      doctor2.save()
+      expect(Doctor.all()).to(eq([doctor1, doctor2]))
+    end
   end
 
   describe('#==') do
