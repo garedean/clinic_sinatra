@@ -1,11 +1,12 @@
 class Doctor
-  attr_reader(:first_name, :last_name, :id, :specialty_id)
+  attr_reader(:first_name, :last_name, :id, :specialty_id, :specialty)
 
   def initialize(attributes)
     @first_name = attributes[:first_name]
     @last_name = attributes[:last_name]
     @id = attributes[:id]
     @specialty_id = attributes[:specialty_id]
+    @specialty = []
   end
 
   def save
@@ -35,15 +36,12 @@ class Doctor
 
   def specialty
     specialties = []
-    type = ''
     returned_specialty = DB.exec("SELECT * FROM specialties WHERE id = #{@specialty_id};")
     returned_specialty.each do |specialty|
       type = specialty['type']
       id   = specialty['id'].to_i
       specialties << Specialty.new(type: type, id: id)
-      type = specialties.first.type
     end
-  #specialties.first.type
-    type
+    @specialty << specialties.first
   end
 end
